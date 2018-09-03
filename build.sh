@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Test for apache installation
-rpm -qa | grep apache
+rpm -qa | grep httpd
 apacheInstalled=$?
 echo "apache installed" $apacheInstalled
 
