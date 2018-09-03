@@ -9,5 +9,5 @@ if test $apacheInstalled -eq 0
 then
   echo "Apache already installed"
 else
-  echo "more work to do"
+  sudo yum install httpd
 fi
