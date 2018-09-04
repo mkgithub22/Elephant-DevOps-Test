@@ -12,3 +12,5 @@ Add a test to see if apache is started, and if not, start it
 Create the new web page in index.html
 Copy the web page into the apache server folder
 Test to see if it's working
+
+Add tests to ensure successful installation
