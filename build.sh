@@ -69,6 +69,17 @@ else
     
     # put our customized web site file in place
     sudo cp index.html /usr/share/httpd/noindex/index.html
+    
+    # test for successful web site customization
+    curl http://localhost | grep "Automation for the People"
+    ourWebPage=$?
+    if test $ourWebPage -eq 0
+    then
+      echo "Our web page is set up.  All done"
+    else
+      echo "Error on setting up customized web page"
+      exit -1
+    fi
   else
     echo "Unexpected web page result"
   fi
