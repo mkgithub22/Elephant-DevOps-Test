@@ -41,8 +41,14 @@ else
     then
     # create our web page and copy it to the apache folder
     echo "Default web page is set up.  Adding our index.html"
-    echo "<html><title>Elephant DevOps Test</title><p>Automation for the People</html>" >index2.html
+    
+    # include the content for the web site here.  we could alternately copy the file from github
+    echo "<html><title>Elephant DevOps Test</title><p>Automation for the People</html>" >index.html
+    
+    # back up the original apache web site file
     sudo mv /usr/share/httpd/noindex/index.html /usr/share/httpd/noindex/index.html.bak
+    
+    # put our customized web site file in place
     sudo cp index.html /usr/share/httpd/noindex/index.html
   else
     echo "Unexpected web page result"
