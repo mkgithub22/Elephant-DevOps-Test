@@ -1,7 +1,9 @@
 #!/bin/bash
 
-#Test for apache installation
-rpm -qa | grep httpd
+# Test for apache installation
+#   rpm shows the installed package as "httpd-version"
+#   use grep -v so it won't match on httpd-tools
+rpm -qa | grep "httpd" | grep -v "httpd-tools"
 apacheInstalled=$?
 echo "apache installed" $apacheInstalled
 
@@ -11,7 +13,8 @@ then
 else
   sudo yum -y install httpd
   # yum return codes are not very reliable, so repeat the rpm -qa command to check for successful installation
-  rpm -qa | grep httpd
+  # Also use grep -v to ensure we don't match httpd-tools
+  rpm -qa | grep "httpd" | grep -v "httpd-tools"
   apacheInstalled=$?
   if test $apacheInstalled -eq 0
   then
@@ -32,7 +35,14 @@ then
 else
   echo "Apache not running, starting"
   sudo apachectl start
-  # todo: check return code
+  apacheStart=$?
+  if test $apacheStart -eq 0
+  then
+    "Apache started successfully"
+  else
+    "Apache failed to start, return code " $apacheStart
+    exit -1
+  fi
 fi
 
 # test to see if our customized web page is in place
