@@ -14,3 +14,5 @@ Copy the web page into the apache server folder
 Test to see if it's working
 
 Add tests to ensure successful installation
+
+Add test to ensure apache starts successfully
