@@ -16,3 +16,5 @@ Test to see if it's working
 Add tests to ensure successful installation
 
 Add test to ensure apache starts successfully
+
+Add test for web page customization successful
